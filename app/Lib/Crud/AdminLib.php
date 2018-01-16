@@ -13,5 +13,10 @@ use App\Model\Products;
 
 class AdminLib
 {
+    public static function getProducts()
+    {
+        $products = Products::OrderBy('name', 'asc')->get(['id','name', 'price']);
 
+        return $products;
+    }
 }
