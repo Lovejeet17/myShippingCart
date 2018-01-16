@@ -21,4 +21,4 @@ Route::get('admin', function () {
 
 Route::get('home', 'Store\ServeController@home');
 
-Route::post('admin/product/create', 'Crud\AdminController@createProduct');
+Route::post('admin/product/create', 'Crud\ProductController@createProduct');
