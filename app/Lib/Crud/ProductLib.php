@@ -32,4 +32,21 @@ class ProductLib
             return false;
         }
     }
+
+    public static function deleteProduct($id)
+    {
+        try
+        {
+            Products::where('id', $id)->delete();
+
+            return true;
+        }
+        catch (\Exception $e)
+        {
+            \Log::error($e->getMessage() . " " . $e->getFile() . $e->getLine());
+            \Log::info($e->getMessage() . " " . $e->getFile() . $e->getFile() . " ~ " . $e->getTraceAsString());
+
+            return false;
+        }
+    }
 }

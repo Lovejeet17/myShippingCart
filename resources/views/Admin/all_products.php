@@ -14,7 +14,7 @@
                         <b>Price: <?= $product->price; ?></b>
                     </span>
 
-                    <a href="" class="addToCart" id="<?= $product->id; ?>">Delete</a>
+                    <a href="<?php echo URL::to('admin/product/delete/'.$product->id);?>" class="deleteProd" data-id="<?= $product->id; ?>">Delete</a>
 
                 </div>
             </div>

@@ -21,6 +21,8 @@ Route::get('admin', function () {
 
 Route::get('home', 'Store\ServeController@home');
 
-Route::get('admin\all_products', 'Crud\AdminController@showProdcuts');
+Route::get('admin/all_products', 'Crud\AdminController@showProdcuts');
 
-Route::post('admin/product/create', 'Crud\ProductController@createProduct');
+Route::post('admin/product/create', 'Crud\ProductController@createProduct');        // create new product
+
+Route::get('admin/product/delete/{id}', 'Crud\ProductController@deleteProduct');         // delete product
