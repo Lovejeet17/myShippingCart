@@ -16,10 +16,14 @@
 
                     <a href="<?php echo URL::to('admin/product/delete/'.$product->id);?>" class="deleteProd" data-id="<?= $product->id; ?>">Delete</a>
 
+                    <button type="button" class="btn btn-info btn-sm prodEdit" data-id="<?= $product->id; ?>" data-prod-name="<?= $product->name; ?>"
+                            data-prod-price="<?= $product->price; ?>" data-toggle="modal">Edit Product</button>
                 </div>
             </div>
 
         <?php endforeach; ?>
+
+        <?= View::make('Model.productCrudModels', ['data' => $products]); ?>
 
     </div>
 

@@ -53,4 +53,22 @@ class ProductController extends Controller
             return false;
         }
     }
+
+    public function editProduct()
+    {
+        try
+        {
+            $input = Input::all();
+
+            ProductLib::editProduct($input);
+
+            return \Redirect::back();
+        }
+        catch (\Exception $e)
+        {
+            \Log::error($e->getMessage());
+
+            return false;
+        }
+    }
 }

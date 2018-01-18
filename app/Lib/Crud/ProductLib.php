@@ -49,4 +49,24 @@ class ProductLib
             return false;
         }
     }
+
+    public static function editProduct($data)
+    {
+        try{
+            Products::where('id', $data['prod_id'])
+                ->update([
+                    'name'  => $data['prod_name'],
+                    'price' => $data['prod_price']
+                ]);
+
+            return true;
+        }
+        catch (\Exception $e)
+        {
+            \Log::error($e->getMessage() . " " . $e->getFile() . $e->getLine());
+            \Log::info($e->getMessage() . " " . $e->getFile() . $e->getFile() . " ~ " . $e->getTraceAsString());
+
+            return false;
+        }
+    }
 }
