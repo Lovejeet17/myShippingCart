@@ -60,7 +60,13 @@ class ProductController extends Controller
         {
             $input = Input::all();
 
-            ProductLib::editProduct($input);
+            $update = ProductLib::editProduct($input);
+
+            if($update):
+                Session::flash('successMsg', 'Product Successfully updated');
+            else:
+                Session::flash('errorMsg', 'Product Not updated');
+            endif;
 
             return \Redirect::back();
         }

@@ -5,6 +5,18 @@
 
     <div>
 
+        <?php if(Session::has('successMsg')): ?>
+            <div class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong> <?= Session::get('status'); ?>
+            </div>
+        <?php elseif(Session::has('errorMsg')): ?>
+            <div class="alert alert-danger alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                <strong>Danger!</strong> <?= Session::get('errorMsg'); ?>
+            </div>
+        <?php endif; ?>
+
         <?php foreach($products as $product): ?>
 
             <div style="border: 2px dotted; padding: 5px; margin: 5px">
