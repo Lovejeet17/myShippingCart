@@ -42,7 +42,13 @@ class ProductController extends Controller
     {
         try
         {
-            ProductLib::deleteProduct($id);
+            $delete = ProductLib::deleteProduct($id);
+
+            if($delete):
+                Session::flash('successMsg', 'Product Successfully deleted');
+            else:
+                Session::flash('errorMsg', 'Product Not deleted');
+            endif;
 
             return \Redirect::back();
         }
