@@ -8,7 +8,7 @@
         <?php if(Session::has('successMsg')): ?>
             <div class="alert alert-success alert-dismissable">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                <strong>Success!</strong> <?= Session::get('status'); ?>
+                <strong>Success!</strong> <?= Session::get('successMsg'); ?>
             </div>
         <?php elseif(Session::has('errorMsg')): ?>
             <div class="alert alert-danger alert-dismissable">

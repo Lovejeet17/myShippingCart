@@ -14,18 +14,18 @@ class ProductController extends Controller
 {
     protected $layout = 'layouts.default';
 
-    public function createProduct()
+    public function createProduct(Request $request)
     {
         try
         {
-            $input = Input::all();
+            $input = $request->only(['prod_name', 'prod_price']);
 
             $success = ProductLib::createProduct($input);
 
             if($success):
-                $msg = "Product ". $input['prod_name'] ." created successfully.";
+                Session::flash('successMsg', 'Product Successfully created.');
             else:
-                $msg = "Product not created";
+                Session::flash('errorMsg', 'Product Not created.');
             endif;
 
             return view($this->layout, ['content' => view('create_product', ['msg' => $msg])]);
@@ -60,11 +60,11 @@ class ProductController extends Controller
         }
     }
 
-    public function editProduct()
+    public function editProduct(Request $request)
     {
         try
         {
-            $input = Input::all();
+            $input = $request->only(['prod_id', 'prod_name', 'prod_price']);
 
             $update = ProductLib::editProduct($input);
 
