@@ -21,6 +21,8 @@ Route::get('admin', function () {
 
 Route::get('home', 'Store\ServeController@home');
 
+Route::get('login', 'Store\ServeController@login');
+
 Route::get('admin/all_products', 'Crud\AdminController@showProdcuts');
 
 Route::post('admin/product/create', 'Crud\ProductController@createProduct');        // create new product

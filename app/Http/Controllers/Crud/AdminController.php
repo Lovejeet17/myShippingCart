@@ -12,6 +12,11 @@ class AdminController extends Controller
 {
     protected $layout = 'layouts.default';
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     public function showProdcuts()
     {
         try
