@@ -21,7 +21,11 @@ Route::get('admin', function () {
 
 Route::get('home', 'Store\ServeController@home');
 
-Route::get('login', 'Store\ServeController@login');
+Route::get('login', 'Store\ServeController@toLogin');
+
+Route::get('signup', 'Store\ServeController@toSignup');
+
+Route::get('user/signup', 'Store\ServeController@signup');
 
 Route::get('admin/all_products', 'Crud\AdminController@showProdcuts');
 
@@ -30,3 +34,7 @@ Route::post('admin/product/create', 'Crud\ProductController@createProduct');    
 Route::get('admin/product/delete/{id}', 'Crud\ProductController@deleteProduct');         // delete product
 
 Route::post('admin/product/edit', 'Crud\ProductController@editProduct');         // edit product
+
+/* session routes*/
+
+Route::get('session/set', 'SessionController@setSessionData');
