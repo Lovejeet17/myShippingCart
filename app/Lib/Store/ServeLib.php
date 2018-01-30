@@ -34,4 +34,25 @@ class ServeLib
             return false;
         }
     }
+
+    public static function login($input)
+    {
+        try
+        {
+            $user = Users::where('email', $input['user_email'])
+                ->where('password', $input['user_pwd'])
+                ->first();
+
+//            if($user !== null):
+            return $user;
+//            endif;
+        }
+        catch (\Exception $e)
+        {
+            \Log::error($e->getMessage() . " " . $e->getFile() . $e->getLine());
+            \Log::info($e->getMessage() . " " . $e->getFile() . $e->getFile() . " ~ " . $e->getTraceAsString());
+
+            return false;
+        }
+    }
 }

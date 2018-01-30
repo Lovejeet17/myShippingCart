@@ -10,5 +10,7 @@ class SessionController extends Controller
     public function setSessionData(Request $request, $data)
     {
         $request->session()->put('email', $data);
+
+        return redirect('home');
     }
 }

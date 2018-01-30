@@ -13,6 +13,10 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $this->middleware('checkLogin', ['except' => 'toLogin', 'toSignup']);
+        $this->middleware('checkLogin', [
+            'except' => [
+                'toLogin', 'toSignup', 'signup', 'login'
+            ]
+        ]);
     }
 }

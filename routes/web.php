@@ -25,7 +25,9 @@ Route::get('login', 'Store\ServeController@toLogin');
 
 Route::get('signup', 'Store\ServeController@toSignup');
 
-Route::get('user/signup', 'Store\ServeController@signup');
+Route::post('user/login', 'Store\ServeController@login');
+
+Route::post('user/signup', 'Store\ServeController@signup');
 
 Route::get('admin/all_products', 'Crud\AdminController@showProdcuts');
 
@@ -37,4 +39,4 @@ Route::post('admin/product/edit', 'Crud\ProductController@editProduct');        
 
 /* session routes*/
 
-Route::get('session/set', 'SessionController@setSessionData');
+Route::get('session/set/{email}', 'SessionController@setSessionData');
