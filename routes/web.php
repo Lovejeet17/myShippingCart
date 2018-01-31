@@ -39,4 +39,4 @@ Route::post('admin/product/edit', 'Crud\ProductController@editProduct');        
 
 /* session routes*/
 
-Route::get('session/set/{email}', 'SessionController@setSessionData');
+Route::get('session/set', 'Store\SessionController@setSessionData');

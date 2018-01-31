@@ -50,12 +50,12 @@ class ServeController extends Controller
             Log::info($url);
 
 //            return redirect()->route('session/set/'.$input['user_email']);
-            return redirect()->route($url, ['email' => $input['user_email']]);
+            return redirect()->route($url);
 
 //            return redirect()->url('session/set/'.$input['user_email']);
         endif;
 
-        Redirect::back();
+        return Redirect::back();
     }
 
     public function signup(Request $request)
