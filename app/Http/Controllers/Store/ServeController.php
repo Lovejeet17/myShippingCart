@@ -44,15 +44,9 @@ class ServeController extends Controller
         $user = ServeLib::login($input);
 
         if($user !== null):
-//            call('session/set/'.$input['user_email']);
 
-            $url = url('session/set');
-            Log::info($url);
+            return redirect('home');
 
-//            return redirect()->route('session/set/'.$input['user_email']);
-            return redirect()->route($url);
-
-//            return redirect()->url('session/set/'.$input['user_email']);
         endif;
 
         return Redirect::back();

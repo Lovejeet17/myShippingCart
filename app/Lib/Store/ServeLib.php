@@ -43,9 +43,13 @@ class ServeLib
                 ->where('password', $input['user_pwd'])
                 ->first();
 
-//            if($user !== null):
+            if($user !== null):
+
+                session()->put('email', $input['user_email']);
+
+            endif;
+
             return $user;
-//            endif;
         }
         catch (\Exception $e)
         {
