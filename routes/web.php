@@ -29,6 +29,8 @@ Route::post('user/login', 'Store\ServeController@login');
 
 Route::post('user/signup', 'Store\ServeController@signup');
 
+Route::get('user/logout', 'Store\ServeController@logout');
+
 Route::get('admin/all_products', 'Crud\AdminController@showProdcuts');
 
 Route::post('admin/product/create', 'Crud\ProductController@createProduct');        // create new product

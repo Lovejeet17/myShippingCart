@@ -62,4 +62,16 @@ class ServeController extends Controller
 
         return redirect('home');
     }
+
+    public function logout(Request $request)
+    {
+        if ($request->session()->exists('email')):
+            $request->session()->forget('email');
+            Log::info('session removed');
+        else:
+            Log::info('session not found');
+        endif;
+
+        return redirect()->back();
+    }
 }
