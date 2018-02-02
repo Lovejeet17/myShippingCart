@@ -15,13 +15,7 @@
 
 <div id="wrapper">
 
-    <div class="col-lg-12">
-        <?php if(session()->has('email')): ?>
-            <a href="<?= URL::to('user/logout'); ?>" class="log-button btn btn-primary pull-right">Log Out</a>
-        <?php else: ?>
-            <a href="<?= URL::to('login'); ?>" class="log-button btn btn-primary pull-right">Log In</a>
-        <?php endif; ?>
-    </div>
+    <?= \View::make('partials.menu')->render(); ?>
 
     <?php echo isset($content) ? $content : ''; ?>
 
