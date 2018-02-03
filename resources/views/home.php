@@ -14,7 +14,7 @@
                         <b>Price: <?= $product->price; ?></b>
                     </span>
 
-                    <a href="" class="addToCart" id="<?= $product->id; ?>">Add To Cart</a>
+                    <a href="" class="addToCart" data-id="<?= $product->id; ?>">Add To Cart</a>
 
                 </div>
             </div>

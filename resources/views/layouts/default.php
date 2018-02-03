@@ -7,6 +7,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" type="text/css">
 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
     <script src="<?php echo asset("css/store.css"); ?>" type="text/css"></script>
 
 </head>
@@ -19,7 +21,8 @@
 
     <?php echo isset($content) ? $content : ''; ?>
 
-    <script src="<?php echo asset("js/product/product.js"); ?>" type="text/javascript"></script>
+    <script src="<?php echo asset("js/store/product.js"); ?>" type="text/javascript"></script>
+    <script src="<?php echo asset("js/store/cart.js"); ?>" type="text/javascript"></script>
 
 </div>
 
