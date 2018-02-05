@@ -18,11 +18,18 @@ class ServeController extends Controller
         parent::__construct();
     }
 
-    public function home()
+    public function home(Request $request)
     {
+        $user = [];
+
         $products = StoreLib::getProducts();
 
-        return view($this->layout, ['content' => view('home', ['products' => $products])]);
+        if ($request->session()->exists('email')):
+            $email = $request->session()->get('email');
+            $user = StoreLib::getUserIdByEmail($email);
+        endif;
+
+        return view($this->layout, ['content' => view('home', ['products' => $products, 'user' => $user])]);
     }
 
     public function toLogin()
@@ -39,7 +46,7 @@ class ServeController extends Controller
     {
         $input = $request->all();
 
-        Log::info($input);
+//        Log::info($input);
 
         $user = ServeLib::login($input);
 

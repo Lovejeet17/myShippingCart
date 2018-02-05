@@ -1,7 +1,7 @@
 
 <h2>Welcome to the home page.</h2>
 
-<?php if(!empty($products)): ?>
+<?php if(!empty($products && $user)): ?>
 
     <div>
 
@@ -14,7 +14,7 @@
                         <b>Price: <?= $product->price; ?></b>
                     </span>
 
-                    <a href="" class="addToCart" data-id="<?= $product->id; ?>">Add To Cart</a>
+                    <a href="<?= URL::to('product/addToCart/'. $user->id); ?>" class="addToCart" data-id="<?= $product->id; ?>">Add To Cart</a>
 
                 </div>
             </div>

@@ -38,3 +38,5 @@ Route::post('admin/product/create', 'Crud\ProductController@createProduct');    
 Route::get('admin/product/delete/{id}', 'Crud\ProductController@deleteProduct');         // delete product
 
 Route::post('admin/product/edit', 'Crud\ProductController@editProduct');         // edit product
+
+Route::post('product/addToCart/{id}', 'Crud\CartController@addToCart');         // edit product
