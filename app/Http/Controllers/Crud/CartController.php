@@ -18,7 +18,14 @@ class CartController extends Controller
     {
         if($request->ajax()):
             $input = $request->all();
-            CartLib::addToCart($input, $id);
+
+            $currentQty = CartLib::checkIfExist($input, $id);
+
+            if($currentQty == null):
+                CartLib::addToCart($input, $id);
+            else:
+                CartLib::updateQty($input, $id, $currentQty + 1);
+            endif;
         endif;
     }
 
