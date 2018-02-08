@@ -23,11 +23,9 @@ interface RepositoryInterface
 
     public function delete($id);
 
-    public function remove($id);
-
     public function find($id, $columns = ['*']);
 
     public function findBy($attribute, $value, $columns = ['*']);
 
-    public function countBy($attribute, $value);
+    public function count($attribute, $value);
 }
