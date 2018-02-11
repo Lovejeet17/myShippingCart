@@ -39,4 +39,6 @@ Route::get('admin/product/delete/{id}', 'Crud\ProductController@deleteProduct');
 
 Route::post('admin/product/edit', 'Crud\ProductController@editProduct');         // edit product
 
-Route::post('product/addToCart/{id}', 'Crud\CartController@addToCart');         // edit product
+Route::post('product/addToCart/{id}', 'Crud\CartController@addToCart');         // add product to cart
+
+Route::get('cart/{id}', 'Crud\CartController@viewCart');         // go to cart

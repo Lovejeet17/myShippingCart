@@ -29,7 +29,7 @@ class ServeController extends Controller
             $user = StoreLib::getUserIdByEmail($email);
         endif;
 
-        return view($this->layout, ['content' => view('home', ['products' => $products, 'user' => $user])]);
+        return view($this->layout, ['content' => view('home', ['products' => $products, 'user' => $user]), 'user' => $user]);
     }
 
     public function toLogin()

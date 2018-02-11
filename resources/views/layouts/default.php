@@ -20,7 +20,9 @@
 
 <div id="wrapper">
 
-    <?= \View::make('partials.menu')->render(); ?>
+    <?php $user_id = isset($user)  ? $user->id : '' ?>
+
+    <?= \View::make('partials.menu', ['user_id' => $user_id])->render(); ?>
 
     <?php echo isset($content) ? $content : ''; ?>
 

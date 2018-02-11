@@ -1,5 +1,6 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
+<!--        --><?php //if(!empty($user_id)):  ?>
         <div class="navbar-header">
             <a class="navbar-brand" href="<?= URL::to('home'); ?>">MyShippingCart</a>
         </div>
@@ -18,7 +19,7 @@
             <?php endif; ?>
 
             <li>
-                <a><i class="fa fa-shopping-cart"></i> Cart</a>
+                <a href="<?= URL::to('cart/'.$user_id); ?>"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
         </ul>
     </div>
