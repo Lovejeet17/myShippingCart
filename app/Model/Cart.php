@@ -9,4 +9,9 @@ class Cart extends Model
     protected $table = 'cart';
 
     protected $guarded = [];
+
+    public function products()
+    {
+        return $this->hasMany('App\Model\Products', 'product_id');
+    }
 }

@@ -31,7 +31,7 @@ abstract  class Repository implements RepositoryInterface
 
     public function getById($id)
     {
-        return $this->findBy('id', $id);
+        return $this->model->get('id', $id);
     }
 
     public function create(array $data)

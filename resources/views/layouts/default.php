@@ -27,6 +27,7 @@
     <?php echo isset($content) ? $content : ''; ?>
 
     <script src="<?php echo asset("js/store/product.js"); ?>" type="text/javascript"></script>
+
     <script src="<?php echo asset("js/store/cart.js"); ?>" type="text/javascript"></script>
 
 </div>

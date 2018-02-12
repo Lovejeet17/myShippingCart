@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Crud;
 
 use App\Http\Lib\Crud\CartLib;
+use App\Http\Lib\Store\StoreLib;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Log;
@@ -33,9 +34,14 @@ class CartController extends Controller
 
     public function viewCart(Request $request)
     {
-        $user = $request->session()->get('email');
+        $email = $request->session()->get('email');
+        $user = StoreLib::getUserIdByEmail($email);
 
-        return view($this->layout, ['content' => view('Shop/cart')]);
+        $products = CartLib::getProductByUser($user->id);
+
+//        dd($products);
+
+        return view($this->layout, ['content' => view('Shop/cart', ['products' => $products, 'user' => $user])]);
     }
 
     public function removeFromCart()

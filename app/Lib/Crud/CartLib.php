@@ -72,4 +72,23 @@ class CartLib
             return false;
         }
     }
+
+    public static function getProductByUser($user_id)
+    {
+        try
+        {
+            $products = Cart::where('cart.user_id',$user_id)
+                ->leftJoin('products', 'cart.product_id', '=', 'products.id')
+                ->get();
+
+            return $products;
+        }
+        catch (\Exception $e)
+        {
+            \Log::error($e->getMessage() . " " . $e->getFile() . $e->getLine());
+            \Log::info($e->getMessage() . " " . $e->getFile() . $e->getFile() . " ~ " . $e->getTraceAsString());
+
+            return false;
+        }
+    }
 }
