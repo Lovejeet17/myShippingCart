@@ -91,4 +91,9 @@ class CartLib
             return false;
         }
     }
+
+    public static function removeFromCart($user_id, $product_id)
+    {
+
+    }
 }

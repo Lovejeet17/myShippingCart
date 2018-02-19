@@ -21,7 +21,8 @@ class ServeLib
             Users::create([
                 'name'      => $input['user_name'],
                 'email'     => $input['user_email'],
-                'password'  => $input['user_pwd']
+                'password'  => $input['user_pwd'],
+                'type'      => $input['user_type']
             ]);
 
             return true;
@@ -41,6 +42,7 @@ class ServeLib
         {
             $user = Users::where('email', $input['user_email'])
                 ->where('password', $input['user_pwd'])
+                ->where('type', $input['user_type'])
                 ->first();
 
             if($user !== null):

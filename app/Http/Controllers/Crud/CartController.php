@@ -44,8 +44,9 @@ class CartController extends Controller
         return view($this->layout, ['content' => view('Shop/cart', ['products' => $products, 'user' => $user])]);
     }
 
-    public function removeFromCart()
+    public function removeFromCart(Request $request, $id)
     {
-
+        $email = $request->session()->get('email');
+        $user = StoreLib::getUserIdByEmail($email);
     }
 }

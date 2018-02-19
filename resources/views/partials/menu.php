@@ -19,7 +19,7 @@
             <?php endif; ?>
 
             <li>
-                <a href="<?= URL::to('cart/'.$user_id); ?>"><i class="fa fa-shopping-cart"></i> Cart</a>
+                <a href="<?= URL::to('cart/'.$user_id); ?>"><i class="fa fa-shopping-cart"></i> Cart <span class="cart-qty">2</span></a>
             </li>
         </ul>
     </div>

@@ -18,4 +18,8 @@
 
     });
 
+    $(".prod-qty-in-cart").bind('keyup mouseup', function () {
+        $(this).val();
+    });
+
 })(jQuery);

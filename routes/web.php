@@ -15,9 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('admin', function () {
-    return view('create_product');
-});
+//Route::get('admin', function () {
+//    return view('create_product');
+//});
+
+Route::get('admin', 'Crud\AdminController@adminLogin');
+
+Route::post('admin/signup', 'Crud\AdminController@signup');
+
+Route::post('admin/login', 'Crud\AdminController@login');
 
 Route::get('home', 'Store\ServeController@home');
 
@@ -42,3 +48,5 @@ Route::post('admin/product/edit', 'Crud\ProductController@editProduct');        
 Route::post('product/addToCart/{id}', 'Crud\CartController@addToCart');         // add product to cart
 
 Route::get('cart/{id}', 'Crud\CartController@viewCart');         // go to cart
+
+Route::get('product/remove/{id}', 'Crud\CartController@removeFromCart');         // remove product from cart

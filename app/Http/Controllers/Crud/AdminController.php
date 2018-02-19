@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 class AdminController extends Controller
 {
     protected $layout = 'layouts.default';
+    protected $admin_layout = 'layouts.admin';
 
     public function __construct()
     {
@@ -29,5 +30,27 @@ class AdminController extends Controller
         {
             return $e->getMessage();
         }
+    }
+
+    public function adminLogin()
+    {
+        return view($this->layout, ['content' => view('Admin/admin_login')]);
+    }
+
+    public function login(Request $request)
+    {
+        $input = $request->all();
+
+//        Log::info($input);
+
+        $user = ServeLib::login($input);
+
+        if($user !== null):
+
+            return redirect('home');
+
+        endif;
+
+        return Redirect::back();
     }
 }

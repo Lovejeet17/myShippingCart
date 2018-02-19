@@ -5,19 +5,22 @@
 
     <div>
 
-        <?php foreach($products as $product): ?>
 
-            <div style="border: 2px dotted; padding: 5px; margin: 5px">
-                <div>
-                    <?= $product->name; ?>
-                    <span style="margin-left: 50px;">
-                        <b>Qty: <?= $product->qty; ?></b>
-                    </span>
+        <table class="table table-hover">
+            <tbody>
 
-                </div>
-            </div>
+            <?php foreach($products as $product): ?>
 
-        <?php endforeach; ?>
+                <tr>
+                    <td><?= $product->name; ?></td>
+                    <td><label>Qty: </label> <input type="number" class="form-control col-xs-2 prod-qty-in-cart" value="<?= $product->qty; ?>"></td>
+                    <td><a href="<?= URL::to('product/remove/'. $user->id); ?>" class="removeFromCart btn-danger" data-id="<?= $product->id; ?>">Remove</a></td>
+                </tr>
+
+            <?php endforeach; ?>
+
+            </tbody>
+        </table>
 
     </div>
 

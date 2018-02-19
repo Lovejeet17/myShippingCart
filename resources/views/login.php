@@ -3,6 +3,7 @@
         <label class="control-label col-sm-2" for="email">Email:</label>
         <div class="col-sm-10">
             <input type="email" class="form-control" name="user_email" placeholder="Enter email">
+            <input type="hidden" name="user_type" value="customer">
         </div>
     </div>
     <div class="form-group">
