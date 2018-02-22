@@ -7,6 +7,7 @@ use App\Model\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class AdminController extends Controller
 {
@@ -15,7 +16,11 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        parent::__construct();
+        $this->middleware('checkAdminlogin', [
+            'except' => [
+                'adminLogin', 'login'
+            ]
+        ]);
     }
 
     public function showProdcuts()
@@ -24,7 +29,7 @@ class AdminController extends Controller
         {
             $products = AdminLib::getProducts();
 
-            return view($this->layout, ['content' => view('Admin/all_products', ['products' => $products])]);
+            return view($this->admin_layout, ['content' => view('Admin/all_products', ['products' => $products])]);
         }
         catch (\Exception $e)
         {
@@ -34,23 +39,38 @@ class AdminController extends Controller
 
     public function adminLogin()
     {
-        return view($this->layout, ['content' => view('Admin/admin_login')]);
+        return view($this->admin_layout, ['content' => view('Admin/admin_login')]);
     }
 
     public function login(Request $request)
     {
         $input = $request->all();
 
-//        Log::info($input);
-
-        $user = ServeLib::login($input);
+        $user = AdminLib::login($input);
 
         if($user !== null):
 
-            return redirect('home');
+            return redirect('admin/home');
 
         endif;
 
         return Redirect::back();
+    }
+
+    public function adminHome()
+    {
+        return view($this->admin_layout, ['content' => view('Admin/dashboard')]);
+    }
+
+    public function adminLogout(Request $request)
+    {
+        if ($request->session()->exists('adminEmail')):
+            $request->session()->forget('adminEmail');
+            Log::info('session removed');
+        else:
+            Log::info('session not found');
+        endif;
+
+        return redirect()->back();
     }
 }

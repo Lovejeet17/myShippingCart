@@ -25,6 +25,10 @@ Route::post('admin/signup', 'Crud\AdminController@signup');
 
 Route::post('admin/login', 'Crud\AdminController@login');
 
+Route::get('admin/home', 'Crud\AdminController@adminHome');
+
+Route::get('admin/logout', 'Crud\AdminController@adminLogout');
+
 Route::get('home', 'Store\ServeController@home');
 
 Route::get('login', 'Store\ServeController@toLogin');

@@ -19,7 +19,7 @@
 
     <?php $user_id = isset($user)  ? $user->id : '' ?>
 
-    <?= \View::make('partials.menu', ['user_id' => $user_id])->render(); ?>
+    <?= \View::make('partials.admin_menu')->render(); ?>
 
     <?php echo isset($content) ? $content : ''; ?>
 

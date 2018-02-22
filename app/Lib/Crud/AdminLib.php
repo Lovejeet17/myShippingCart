@@ -10,6 +10,7 @@ namespace App\Http\Lib\Crud;
 
 
 use App\Model\Products;
+use App\Model\Users;
 
 class AdminLib
 {
@@ -18,5 +19,31 @@ class AdminLib
         $products = Products::OrderBy('name', 'asc')->get(['id','name', 'price']);
 
         return $products;
+    }
+
+    public static function login($input)
+    {
+        try
+        {
+            $user = Users::where('email', $input['user_email'])
+                ->where('password', $input['user_pwd'])
+                ->where('type', $input['user_type'])
+                ->first();
+
+            if($user !== null):
+
+                session()->put('adminEmail', $input['user_email']);
+
+            endif;
+
+            return $user;
+        }
+        catch (\Exception $e)
+        {
+            \Log::error($e->getMessage() . " " . $e->getFile() . $e->getLine());
+            \Log::info($e->getMessage() . " " . $e->getFile() . $e->getFile() . " ~ " . $e->getTraceAsString());
+
+            return false;
+        }
     }
 }
